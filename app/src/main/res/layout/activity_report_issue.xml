@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1F3864"
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_media_previous"
+                android:layout_marginEnd="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Infrastructure Issue"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Report Infrastructure Issue"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Help us identify and fix problems in your community"
+                        android:textSize="13sp"
+                        android:textColor="#888888"
+                        android:layout_marginBottom="20dp"/>
+
+                    <!-- Infrastructure Type -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infrastructure Type *"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"
+                        android:layout_marginBottom="6dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerIssueType"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/spinner_bg"
+                        android:padding="8dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Community Name -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Community Name *"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"
+                        android:layout_marginBottom="6dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCommunityName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter community name"
+                            android:inputType="textCapWords"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Severity -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Severity Level *"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"
+                        android:layout_marginBottom="6dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <Button
+                            android:id="@+id/btnLow"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:text="Low"
+                            android:backgroundTint="#DDDDDD"
+                            android:textColor="#333333"
+                            android:layout_marginEnd="6dp"/>
+
+                        <Button
+                            android:id="@+id/btnMedium"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:text="Medium"
+                            android:backgroundTint="#DDDDDD"
+                            android:textColor="#333333"
+                            android:layout_marginEnd="6dp"/>
+
+                        <Button
+                            android:id="@+id/btnHigh"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:text="High"
+                            android:backgroundTint="#DDDDDD"
+                            android:textColor="#333333"/>
+
+                    </LinearLayout>
+
+                    <!-- Description -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description of Issue *"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"
+                        android:layout_marginBottom="6dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:hint="Provide detailed information about the issue..."
+                            android:inputType="textMultiLine"
+                            android:gravity="top"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Upload Image -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Image (Optional)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"
+                        android:layout_marginBottom="6dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutUpload"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/dashed_border"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/ivPreview"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@android:drawable/ic_menu_camera"
+                            android:scaleType="centerCrop"
+                            android:visibility="visible"/>
+
+                        <TextView
+                            android:id="@+id/tvUploadText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap to upload photo"
+                            android:textSize="13sp"
+                            android:textColor="#888888"/>
+
+                    </LinearLayout>
+
+                    <!-- GPS Location -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GPS Location *"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F3864"
+                        android:layout_marginBottom="6dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="24dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_marginEnd="8dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etGpsLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Latitude, Longitude"
+                                android:inputType="none"
+                                android:focusable="false"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Button
+                            android:id="@+id/btnCaptureGps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="52dp"
+                            android:text="Capture GPS"
+                            android:backgroundTint="#2E75B6"/>
+
+                    </LinearLayout>
+
+                    <!-- Warning Box -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/warning_bg"
+                        android:padding="12dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⚠️  "
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Please ensure all information is accurate. Your report will be reviewed by our team."
+                            android:textSize="12sp"
+                            android:textColor="#856404"/>
+
+                    </LinearLayout>
+
+                    <!-- Submit Button -->
+                    <Button
+                        android:id="@+id/btnSubmitReport"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Submit Report"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="#1F3864"
+                        android:layout_marginBottom="12dp"/>
+
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Cancel"
+                        android:textSize="16sp"
+                        android:backgroundTint="#DDDDDD"
+                        android:textColor="#333333"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "398916676238",
+    "project_id": "cleanflow-90206",
+    "storage_bucket": "cleanflow-90206.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398916676238:android:15f8b97036380c45ec37df",
+        "android_client_info": {
+          "package_name": "com.cleanflow.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398916676238-ds4akl00n7l9dbbakdeop2t7o7roijn3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cleanflow.app",
+            "certificate_hash": "4b8098916fc42cb1b744ddc73e9aa9295c686fb0"
+          }
+        },
+        {
+          "client_id": "398916676238-6l31m7svfoos096okiavsl0afl8nodj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWq7_pX4fGsNGsvjX1AiNOiuGvVswU3N8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398916676238-6l31m7svfoos096okiavsl0afl8nodj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
