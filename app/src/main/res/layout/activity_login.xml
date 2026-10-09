@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4FF">
+    android:background="@color/app_bg"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,19 +13,19 @@
         android:padding="24dp"
         android:gravity="center_horizontal">
 
-        <!-- Logo Section -->
+        <!-- Logo & Branding Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:paddingTop="40dp"
-            android:paddingBottom="32dp">
+            android:paddingTop="36dp"
+            android:paddingBottom="28dp">
 
             <ImageView
                 android:id="@+id/imgLogo"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@mipmap/logo"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
@@ -33,17 +35,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CleanFlow"
-                android:textSize="28sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="#1F3864"
-                android:layout_marginTop="8dp"/>
+                android:textColor="@color/navy_primary"
+                android:layout_marginTop="12dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rural Water &amp; Sanitation"
+                android:text="Water &amp; Sanitation Monitoring"
                 android:textSize="14sp"
-                android:textColor="#666666"/>
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp"/>
 
         </LinearLayout>
 
@@ -51,9 +54,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/card_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,14 +70,14 @@
                     android:text="Welcome Back"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"/>
+                    android:textColor="@color/navy_primary"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign in to your account"
+                    android:text="Sign in to track and report water issues"
                     android:textSize="14sp"
-                    android:textColor="#888888"
+                    android:textColor="@color/text_muted"
                     android:layout_marginBottom="24dp"/>
 
                 <!-- Email -->
@@ -82,16 +85,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email Address"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_marginBottom="16dp">
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
+                    android:layout_marginBottom="18dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmail"
@@ -107,17 +115,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Password"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
                     app:passwordToggleEnabled="true"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_marginBottom="24dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -130,14 +142,15 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Login Button -->
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="54dp"
                     android:text="Sign In"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:backgroundTint="#1F3864"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/navy_primary"
                     android:layout_marginBottom="16dp"/>
 
                 <!-- Divider -->
@@ -152,32 +165,34 @@
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
-                        android:background="#DDDDDD"/>
+                        android:background="@color/divider_color"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="  OR  "
-                        android:textColor="#888888"
-                        android:textSize="12sp"/>
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"
-                        android:background="#DDDDDD"/>
+                        android:background="@color/divider_color"/>
 
                 </LinearLayout>
 
                 <!-- Register Button -->
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="54dp"
                     android:text="Create Account"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:backgroundTint="#2E75B6"/>
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/water_blue"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -187,8 +202,8 @@
             android:layout_height="wrap_content"
             android:text="© 2026 CleanFlow Community Infrastructure"
             android:textSize="12sp"
-            android:textColor="#888888"
-            android:layout_marginTop="24dp"
+            android:textColor="@color/text_muted"
+            android:layout_marginTop="28dp"
             android:layout_marginBottom="24dp"/>
 
     </LinearLayout>

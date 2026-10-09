@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4FF">
+    android:background="@color/app_bg"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,23 +19,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:paddingTop="32dp"
-            android:paddingBottom="24dp">
+            android:paddingTop="28dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Account"
-                android:textSize="26sp"
+                android:text="Join CleanFlow"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                android:textColor="#1F3864"/>
+                android:textColor="@color/navy_primary"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Join the CleanFlow community"
-                android:textSize="14sp"
-                android:textColor="#666666"/>
+                android:text="Empowering communities for better water &amp; sanitation"
+                android:textSize="13.5sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp"/>
 
         </LinearLayout>
 
@@ -42,8 +44,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/card_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,22 +59,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Full Name *"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
                     android:layout_marginBottom="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etFullName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Your full name"
+                        android:hint="e.g. Sipho Ndlovu"
                         android:inputType="textPersonName"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -81,15 +89,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email Address *"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
                     android:layout_marginBottom="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -106,22 +119,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone Number"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
                     android:layout_marginBottom="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="+27 12 345 6789"
+                        android:hint="+27 82 123 4567"
                         android:inputType="phone"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -131,15 +149,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Password *"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
                     app:passwordToggleEnabled="true"
                     android:layout_marginBottom="16dp">
 
@@ -157,15 +180,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Confirm Password *"
-                    android:textSize="14sp"
+                    android:textSize="13.5sp"
                     android:textStyle="bold"
-                    android:textColor="#1F3864"
+                    android:textColor="@color/navy_primary"
                     android:layout_marginBottom="6dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxStrokeColor="@color/navy_primary"
                     app:passwordToggleEnabled="true"
                     android:layout_marginBottom="24dp">
 
@@ -179,24 +207,28 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Register Button -->
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="54dp"
                     android:text="Create Account"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:backgroundTint="#1F3864"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/navy_primary"
                     android:layout_marginBottom="12dp"/>
 
                 <!-- Back to Login -->
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBackToLogin"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="54dp"
                     android:text="Back to Login"
                     android:textSize="16sp"
-                    android:backgroundTint="#2E75B6"/>
+                    app:cornerRadius="14dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/water_blue"
+                    android:textColor="@color/water_blue"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -206,7 +238,7 @@
             android:layout_height="wrap_content"
             android:text="© 2026 CleanFlow Community Infrastructure"
             android:textSize="12sp"
-            android:textColor="#888888"
+            android:textColor="@color/text_muted"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"/>
 

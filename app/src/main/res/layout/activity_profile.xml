@@ -1,54 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4FF">
+    android:orientation="vertical"
+    android:background="@color/app_bg">
 
+    <!-- Top App Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/bg_gradient_header"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <!-- Top Bar -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back_arrow"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Back Button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#1F3864"
-            android:padding="16dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:text="My Profile"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-            <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@android:drawable/ic_media_previous"
-                android:layout_marginEnd="12dp"/>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Profile"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
 
-            <!-- Profile Header Card -->
+            <!-- Profile Hero Header Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="4dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,17 +64,17 @@
                     android:orientation="vertical"
                     android:gravity="center"
                     android:padding="24dp"
-                    android:background="#1F3864">
+                    android:background="@drawable/bg_gradient_header">
 
                     <!-- Avatar -->
                     <TextView
                         android:id="@+id/tvAvatar"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
                         android:text="K"
-                        android:textSize="32sp"
+                        android:textSize="34sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/navy_primary"
                         android:gravity="center"
                         android:background="@drawable/circle_bg"
                         android:layout_marginBottom="12dp"/>
@@ -76,8 +84,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Loading..."
-                        android:textColor="#FFFFFF"
-                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
                         android:textStyle="bold"/>
 
                     <TextView
@@ -85,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:textColor="#BBCCEE"
+                        android:textColor="@color/water_blue_bg"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp"/>
 
@@ -94,14 +102,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Community Member"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/status_assigned_text"
                         android:textSize="12sp"
+                        android:textStyle="bold"
                         android:background="@drawable/badge_assigned"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:layout_marginTop="8dp"/>
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:layout_marginTop="12dp"/>
 
                 </LinearLayout>
 
@@ -111,15 +120,16 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="2dp"
-                android:layout_marginBottom="16dp">
+                app:cardBackgroundColor="@color/card_bg"
+                android:layout_marginBottom="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <!-- Total Reports -->
                     <LinearLayout
@@ -134,16 +144,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textSize="28sp"
+                            android:textSize="26sp"
                             android:textStyle="bold"
-                            android:textColor="#1F3864"/>
+                            android:textColor="@color/navy_primary"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total Reports"
                             android:textSize="12sp"
-                            android:textColor="#888888"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="2dp"/>
 
                     </LinearLayout>
 
@@ -151,7 +163,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="#EEEEEE"/>
+                        android:background="@color/divider_color"/>
 
                     <!-- Resolved -->
                     <LinearLayout
@@ -166,16 +178,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textSize="28sp"
+                            android:textSize="26sp"
                             android:textStyle="bold"
-                            android:textColor="#00AA55"/>
+                            android:textColor="@color/severity_low"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Resolved"
                             android:textSize="12sp"
-                            android:textColor="#888888"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="2dp"/>
 
                     </LinearLayout>
 
@@ -183,7 +197,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="#EEEEEE"/>
+                        android:background="@color/divider_color"/>
 
                     <!-- Pending -->
                     <LinearLayout
@@ -198,16 +212,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textSize="28sp"
+                            android:textSize="26sp"
                             android:textStyle="bold"
-                            android:textColor="#FFA500"/>
+                            android:textColor="@color/severity_medium"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pending"
                             android:textSize="12sp"
-                            android:textColor="#888888"/>
+                            android:textStyle="bold"
+                            android:textColor="@color/text_muted"
+                            android:layout_marginTop="2dp"/>
 
                     </LinearLayout>
 
@@ -215,13 +231,14 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Info Card -->
+            <!-- Account Details Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="2dp"
-                android:layout_marginBottom="16dp">
+                app:cardBackgroundColor="@color/card_bg"
+                android:layout_marginBottom="24dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -232,10 +249,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Account Information"
+                        android:text="Account Details"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="16dp"/>
 
                     <!-- Phone Row -->
@@ -244,13 +261,14 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="12dp">
+                        android:layout_marginBottom="14dp">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@android:drawable/sym_action_call"
-                            android:layout_marginEnd="12dp"/>
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_water_drop"
+                            android:layout_marginEnd="12dp"
+                            android:contentDescription="Phone Icon"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -263,7 +281,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Phone Number"
                                 android:textSize="12sp"
-                                android:textColor="#888888"/>
+                                android:textColor="@color/text_muted"/>
 
                             <TextView
                                 android:id="@+id/tvPhone"
@@ -271,11 +289,18 @@
                                 android:layout_height="wrap_content"
                                 android:text="Not provided"
                                 android:textSize="14sp"
-                                android:textColor="#333333"/>
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider_color"
+                        android:layout_marginBottom="14dp"/>
 
                     <!-- Member Since Row -->
                     <LinearLayout
@@ -285,10 +310,11 @@
                         android:gravity="center_vertical">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@android:drawable/ic_menu_my_calendar"
-                            android:layout_marginEnd="12dp"/>
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_location_pin"
+                            android:layout_marginEnd="12dp"
+                            android:contentDescription="Calendar Icon"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -301,7 +327,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Member Since"
                                 android:textSize="12sp"
-                                android:textColor="#888888"/>
+                                android:textColor="@color/text_muted"/>
 
                             <TextView
                                 android:id="@+id/tvMemberSince"
@@ -309,7 +335,8 @@
                                 android:layout_height="wrap_content"
                                 android:text="2026"
                                 android:textSize="14sp"
-                                android:textColor="#333333"/>
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"/>
 
                         </LinearLayout>
 
@@ -320,17 +347,19 @@
             </androidx.cardview.widget.CardView>
 
             <!-- Logout Button -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="54dp"
                 android:text="Log Out"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:backgroundTint="#CC0000"
+                app:cornerRadius="14dp"
+                app:backgroundTint="#EF4444"
                 android:layout_marginBottom="24dp"/>
 
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+</LinearLayout>

@@ -2,52 +2,36 @@ package com.cleanflow.app.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.cleanflow.app.R
 import com.cleanflow.app.data.AppDatabase
+import com.cleanflow.app.databinding.ActivityRegisterBinding
 import com.cleanflow.app.home.HomeActivity
 import com.cleanflow.app.models.User
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 import java.util.UUID
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRegisterBinding
     private lateinit var db: AppDatabase
     private lateinit var sessionManager: SessionManager
 
-    private lateinit var etFullName: TextInputEditText
-    private lateinit var etEmail: TextInputEditText
-    private lateinit var etPhone: TextInputEditText
-    private lateinit var etPassword: TextInputEditText
-    private lateinit var etConfirmPassword: TextInputEditText
-    private lateinit var btnRegister: Button
-    private lateinit var btnBackToLogin: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         db = AppDatabase.getDatabase(this)
         sessionManager = SessionManager(this)
 
-        etFullName = findViewById(R.id.etFullName)
-        etEmail = findViewById(R.id.etEmail)
-        etPhone = findViewById(R.id.etPhone)
-        etPassword = findViewById(R.id.etPassword)
-        etConfirmPassword = findViewById(R.id.etConfirmPassword)
-        btnRegister = findViewById(R.id.btnRegister)
-        btnBackToLogin = findViewById(R.id.btnBackToLogin)
-
-        btnRegister.setOnClickListener {
-            val fullName = etFullName.text.toString().trim()
-            val email = etEmail.text.toString().trim()
-            val phone = etPhone.text.toString().trim()
-            val password = etPassword.text.toString().trim()
-            val confirmPassword = etConfirmPassword.text.toString().trim()
+        binding.btnRegister.setOnClickListener {
+            val fullName = binding.etFullName.text.toString().trim()
+            val email = binding.etEmail.text.toString().trim()
+            val phone = binding.etPhone.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            val confirmPassword = binding.etConfirmPassword.text.toString().trim()
 
             if (fullName.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show()
@@ -64,15 +48,15 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            btnRegister.isEnabled = false
-            btnRegister.text = "Creating account..."
+            binding.btnRegister.isEnabled = false
+            binding.btnRegister.text = "Creating account..."
 
             lifecycleScope.launch {
                 val existingUser = db.userDao().getUserByEmail(email)
                 if (existingUser != null) {
                     Toast.makeText(this@RegisterActivity, "Email already registered", Toast.LENGTH_LONG).show()
-                    btnRegister.isEnabled = true
-                    btnRegister.text = "Create Account"
+                    binding.btnRegister.isEnabled = true
+                    binding.btnRegister.text = "Create Account"
                     return@launch
                 }
 
@@ -94,7 +78,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        btnBackToLogin.setOnClickListener {
+        binding.btnBackToLogin.setOnClickListener {
             finish()
         }
     }

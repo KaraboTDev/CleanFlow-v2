@@ -2,29 +2,24 @@ package com.cleanflow.app.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.cleanflow.app.R
 import com.cleanflow.app.data.AppDatabase
+import com.cleanflow.app.databinding.ActivityLoginBinding
 import com.cleanflow.app.home.HomeActivity
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var sessionManager: SessionManager
     private lateinit var db: AppDatabase
-    
-    private lateinit var etEmail: TextInputEditText
-    private lateinit var etPassword: TextInputEditText
-    private lateinit var btnLogin: Button
-    private lateinit var btnRegister: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sessionManager = SessionManager(this)
         db = AppDatabase.getDatabase(this)
@@ -35,22 +30,17 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        btnLogin = findViewById(R.id.btnLogin)
-        btnRegister = findViewById(R.id.btnRegister)
-
-        btnLogin.setOnClickListener {
-            val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
+        binding.btnLogin.setOnClickListener {
+            val email = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            btnLogin.isEnabled = false
-            btnLogin.text = "Signing in..."
+            binding.btnLogin.isEnabled = false
+            binding.btnLogin.text = "Signing in..."
 
             lifecycleScope.launch {
                 val user = db.userDao().getUserByEmail(email)
@@ -62,13 +52,13 @@ class LoginActivity : AppCompatActivity() {
                     goToHome()
                 } else {
                     Toast.makeText(this@LoginActivity, "User not found. Please register.", Toast.LENGTH_LONG).show()
-                    btnLogin.isEnabled = true
-                    btnLogin.text = "Sign In"
+                    binding.btnLogin.isEnabled = true
+                    binding.btnLogin.text = "Sign In"
                 }
             }
         }
 
-        btnRegister.setOnClickListener {
+        binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }

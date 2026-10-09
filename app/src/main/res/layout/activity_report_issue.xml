@@ -1,73 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4FF">
+    android:orientation="vertical"
+    android:background="@color/app_bg">
 
+    <!-- Top App Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/bg_gradient_header"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <!-- Top Bar -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back_arrow"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Back Button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#1F3864"
-            android:padding="16dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:text="Report Infrastructure Issue"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-            <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@android:drawable/ic_media_previous"
-                android:layout_marginEnd="12dp"/>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Report Infrastructure Issue"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/card_bg">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="22dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Report Infrastructure Issue"
+                        android:text="Issue Details"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"/>
+                        android:textColor="@color/navy_primary"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Help us identify and fix problems in your community"
-                        android:textSize="13sp"
-                        android:textColor="#888888"
+                        android:text="Help technicians resolve water &amp; sanitation faults quickly"
+                        android:textSize="13.5sp"
+                        android:textColor="@color/text_muted"
                         android:layout_marginBottom="20dp"/>
 
                     <!-- Infrastructure Type -->
@@ -75,9 +84,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Infrastructure Type *"
-                        android:textSize="14sp"
+                        android:textSize="13.5sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
 
                     <Spinner
@@ -85,30 +94,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
                         android:background="@drawable/spinner_bg"
-                        android:padding="8dp"
-                        android:layout_marginBottom="16dp"/>
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:layout_marginBottom="18dp"/>
 
                     <!-- Community Name -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Community Name *"
-                        android:textSize="14sp"
+                        android:text="Community Name / Village *"
+                        android:textSize="13.5sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="16dp">
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="@color/navy_primary"
+                        android:layout_marginBottom="18dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCommunityName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Enter community name"
+                            android:hint="Enter community or village name"
                             android:inputType="textCapWords"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -118,45 +133,51 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Severity Level *"
-                        android:textSize="14sp"
+                        android:textSize="13.5sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="18dp">
 
                         <Button
                             android:id="@+id/btnLow"
                             android:layout_width="0dp"
-                            android:layout_height="44dp"
+                            android:layout_height="46dp"
                             android:layout_weight="1"
                             android:text="Low"
-                            android:backgroundTint="#DDDDDD"
-                            android:textColor="#333333"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="@color/card_stroke"
+                            android:textColor="@color/text_secondary"
                             android:layout_marginEnd="6dp"/>
 
                         <Button
                             android:id="@+id/btnMedium"
                             android:layout_width="0dp"
-                            android:layout_height="44dp"
+                            android:layout_height="46dp"
                             android:layout_weight="1"
                             android:text="Medium"
-                            android:backgroundTint="#DDDDDD"
-                            android:textColor="#333333"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="@color/card_stroke"
+                            android:textColor="@color/text_secondary"
                             android:layout_marginEnd="6dp"/>
 
                         <Button
                             android:id="@+id/btnHigh"
                             android:layout_width="0dp"
-                            android:layout_height="44dp"
+                            android:layout_height="46dp"
                             android:layout_weight="1"
                             android:text="High"
-                            android:backgroundTint="#DDDDDD"
-                            android:textColor="#333333"/>
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:backgroundTint="@color/card_stroke"
+                            android:textColor="@color/text_secondary"/>
 
                     </LinearLayout>
 
@@ -164,23 +185,28 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Description of Issue *"
-                        android:textSize="14sp"
+                        android:text="Description of Fault *"
+                        android:textSize="13.5sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="16dp">
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="@color/navy_primary"
+                        android:layout_marginBottom="18dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etDescription"
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            android:hint="Provide detailed information about the issue..."
+                            android:layout_height="110dp"
+                            android:hint="Provide details (e.g., continuous leak, pump noise, no water flow)..."
                             android:inputType="textMultiLine"
                             android:gravity="top"/>
 
@@ -190,10 +216,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Upload Image (Optional)"
-                        android:textSize="14sp"
+                        android:text="Upload Photo (Optional)"
+                        android:textSize="13.5sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
 
                     <LinearLayout
@@ -203,23 +229,28 @@
                         android:orientation="vertical"
                         android:gravity="center"
                         android:background="@drawable/dashed_border"
-                        android:layout_marginBottom="16dp">
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginBottom="18dp">
 
                         <ImageView
                             android:id="@+id/ivPreview"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@android:drawable/ic_menu_camera"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_water_drop"
                             android:scaleType="centerCrop"
-                            android:visibility="visible"/>
+                            android:visibility="visible"
+                            android:contentDescription="Image Preview"/>
 
                         <TextView
                             android:id="@+id/tvUploadText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tap to upload photo"
+                            android:text="Tap to attach photo of damage"
                             android:textSize="13sp"
-                            android:textColor="#888888"/>
+                            android:textColor="@color/water_blue"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp"/>
 
                     </LinearLayout>
 
@@ -227,10 +258,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="GPS Location *"
-                        android:textSize="14sp"
+                        android:text="GPS Location Coordinates *"
+                        android:textSize="13.5sp"
                         android:textStyle="bold"
-                        android:textColor="#1F3864"
+                        android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
 
                     <LinearLayout
@@ -238,13 +269,18 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginBottom="24dp">
+                        android:layout_marginBottom="22dp">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxStrokeColor="@color/navy_primary"
                             android:layout_marginEnd="8dp">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -257,21 +293,24 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnCaptureGps"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp"
+                            android:layout_height="54dp"
                             android:text="Capture GPS"
-                            android:backgroundTint="#2E75B6"/>
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="12dp"
+                            app:backgroundTint="@color/water_blue"/>
 
                     </LinearLayout>
 
-                    <!-- Warning Box -->
+                    <!-- Warning / Reassurance Box -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/warning_bg"
-                        android:padding="12dp"
+                        android:padding="14dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:layout_marginBottom="24dp">
@@ -279,40 +318,43 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="⚠️  "
+                            android:text="ℹ️  "
                             android:textSize="16sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Please ensure all information is accurate. Your report will be reviewed by our team."
+                            android:text="Your report will be automatically logged and dispatched to local municipal technicians."
                             android:textSize="12sp"
-                            android:textColor="#856404"/>
+                            android:textColor="@color/status_pending_text"/>
 
                     </LinearLayout>
 
                     <!-- Submit Button -->
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnSubmitReport"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Submit Report"
+                        android:layout_height="54dp"
+                        android:text="Submit Infrastructure Report"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:backgroundTint="#1F3864"
+                        app:cornerRadius="14dp"
+                        app:backgroundTint="@color/navy_primary"
                         android:layout_marginBottom="12dp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnCancel"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="54dp"
                         android:text="Cancel"
                         android:textSize="16sp"
-                        android:backgroundTint="#DDDDDD"
-                        android:textColor="#333333"/>
+                        app:cornerRadius="14dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        app:strokeColor="@color/card_stroke"
+                        android:textColor="@color/text_secondary"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

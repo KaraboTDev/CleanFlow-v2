@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- CleanFlow Primary Color Palette (White & Blue Theme) -->
+    <color name="navy_primary">#0F2850</color>
+    <color name="navy_dark">#081733</color>
+    <color name="water_blue">#0284C7</color>
+    <color name="water_blue_light">#38BDF8</color>
+    <color name="water_blue_bg">#E0F2FE</color>
+    <color name="app_bg">#F4F7FA</color>
+
+    <!-- Surface & Card Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="card_stroke">#E2E8F0</color>
+    <color name="divider_color">#F1F5F9</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_muted">#94A3B8</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Status Badge Colors -->
+    <color name="status_pending_text">#B45309</color>
+    <color name="status_pending_bg">#FEF3C7</color>
+
+    <color name="status_assigned_text">#0369A1</color>
+    <color name="status_assigned_bg">#E0F2FE</color>
+
+    <color name="status_resolved_text">#047857</color>
+    <color name="status_resolved_bg">#D1FAE5</color>
+
+    <!-- Severity Colors -->
+    <color name="severity_low">#10B981</color>
+    <color name="severity_medium">#F59E0B</color>
+    <color name="severity_high">#EF4444</color>
+
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 </resources>

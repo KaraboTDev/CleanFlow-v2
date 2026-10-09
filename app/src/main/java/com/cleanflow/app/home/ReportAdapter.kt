@@ -1,43 +1,40 @@
 package com.cleanflow.app.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.cleanflow.app.R
+import com.cleanflow.app.databinding.ItemReportBinding
 import com.cleanflow.app.models.Report
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class ReportAdapter(private val reports: List<Report>) :
     RecyclerView.Adapter<ReportAdapter.ReportViewHolder>() {
 
-    class ReportViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvIssueType: TextView = view.findViewById(R.id.tvIssueType)
-        val tvCommunity: TextView = view.findViewById(R.id.tvCommunity)
-        val tvStatus: TextView = view.findViewById(R.id.tvStatus)
-    }
+    class ReportViewHolder(val binding: ItemReportBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_report, parent, false)
-        return ReportViewHolder(view)
+        val binding = ItemReportBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ReportViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ReportViewHolder, position: Int) {
         val report = reports[position]
-        holder.tvIssueType.text = report.issueType
-        holder.tvCommunity.text = "${timeAgo(report.submittedAt)} • ${report.communityName}"
-        holder.tvStatus.text = report.status
+        holder.binding.tvIssueType.text = report.issueType
+        holder.binding.tvCommunity.text = "${timeAgo(report.submittedAt)} • ${report.communityName}"
+        holder.binding.tvStatus.text = report.status
 
-        val badgeRes = when (report.status) {
-            "Assigned" -> R.drawable.badge_assigned
-            "Resolved" -> R.drawable.badge_resolved
-            else -> R.drawable.badge_pending
+        val (badgeRes, textColorRes) = when (report.status) {
+            "Assigned" -> Pair(R.drawable.badge_assigned, R.color.status_assigned_text)
+            "Resolved" -> Pair(R.drawable.badge_resolved, R.color.status_resolved_text)
+            else -> Pair(R.drawable.badge_pending, R.color.status_pending_text)
         }
-        holder.tvStatus.setBackgroundResource(badgeRes)
+        holder.binding.tvStatus.setBackgroundResource(badgeRes)
+        holder.binding.tvStatus.setTextColor(ContextCompat.getColor(holder.binding.root.context, textColorRes))
     }
 
     override fun getItemCount() = reports.size

@@ -1,231 +1,474 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4FF">
+    android:orientation="vertical"
+    android:background="@color/app_bg">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <!-- Top Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1F3864"
-            android:padding="16dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:orientation="vertical">
 
+            <!-- Top Header Bar -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvGreeting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello, Community Member"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="How can we help you today?"
-                    android:textColor="#BBCCEE"
-                    android:textSize="13sp"/>
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/ivProfile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/logo"
-                android:background="@drawable/logo_background"
-                android:padding="2dp"/>
-
-        </LinearLayout>
-
-        <!-- Main Content -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Report Issue Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardReportIssue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                android:layout_marginBottom="16dp">
+                android:background="@drawable/bg_gradient_header"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="28dp"
+                android:paddingBottom="28dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="#1F3864"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_menu_compass"
-                        android:layout_marginBottom="12dp"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvGreeting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Report a Water Issue"
-                        android:textColor="#FFFFFF"
+                        android:text="Hello, Community Member"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Quickly notify maintenance about leaks or quality concerns in your area."
-                        android:textColor="#BBCCEE"
+                        android:text="CleanFlow Infrastructure Monitoring"
+                        android:textColor="@color/water_blue_bg"
                         android:textSize="13sp"
-                        android:layout_marginTop="6dp"/>
+                        android:layout_marginTop="2dp"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@mipmap/logo"
+                    android:background="@drawable/circle_bg"
+                    android:padding="2dp"
+                    android:contentDescription="Profile Icon"/>
 
-            <!-- Stats Row -->
+            </LinearLayout>
+
+            <!-- Main Content Container -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:orientation="vertical"
+                android:padding="20dp">
 
-                <!-- Stat 1 -->
+                <!-- Primary Call to Action Card -->
                 <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                    android:id="@+id/cardReportIssue"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    android:layout_marginEnd="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:layout_marginBottom="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/bg_water_card"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="24dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_water_drop_white"
+                            android:layout_marginBottom="12dp"
+                            android:contentDescription="Water Drop Icon"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Active Pump Stations"
-                            android:textSize="11sp"
-                            android:textColor="#888888"/>
+                            android:text="Report Infrastructure Issue"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/tvPumpStations"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="24 / 26"
-                            android:textSize="22sp"
-                            android:textStyle="bold"
-                            android:textColor="#2E75B6"/>
+                            android:text="Instantly log water leaks, broken pumps, or sanitation issues in your community."
+                            android:textColor="@color/water_blue_bg"
+                            android:textSize="13.5sp"
+                            android:layout_marginTop="6dp"/>
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
-                <!-- Stat 2 -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                <!-- System Health KPI Stats -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    android:layout_marginStart="8dp">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <!-- Stat 1: Pump Stations -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="3dp"
+                        android:layout_marginEnd="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_kpi_pump_card"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="PUMP STATIONS"
+                                    android:textSize="10.5sp"
+                                    android:textStyle="bold"
+                                    android:letterSpacing="0.05"
+                                    android:textColor="#1E40AF"/>
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/ic_water_drop"
+                                    android:contentDescription="Pump Icon"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvPumpStations"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="24 / 26"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/navy_primary"
+                                android:layout_marginTop="6dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="92% Operational"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/status_resolved_text"
+                                android:background="@drawable/badge_resolved"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="3dp"
+                                android:layout_marginTop="6dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Stat 2: Reservoir Level -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="3dp"
+                        android:layout_marginStart="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_kpi_reservoir_card"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="RESERVOIR LEVEL"
+                                    android:textSize="10.5sp"
+                                    android:textStyle="bold"
+                                    android:letterSpacing="0.05"
+                                    android:textColor="#065F46"/>
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/ic_water_drop"
+                                    android:contentDescription="Reservoir Icon"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvWaterLevel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="88%"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="#047857"
+                                android:layout_marginTop="6dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Optimal Capacity"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/status_assigned_text"
+                                android:background="@drawable/badge_assigned"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="3dp"
+                                android:paddingBottom="3dp"
+                                android:layout_marginTop="6dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!-- Water & Sanitation Tips Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Water Level"
-                            android:textSize="11sp"
-                            android:textColor="#888888"/>
-
-                        <TextView
-                            android:id="@+id/tvWaterLevel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="92%"
-                            android:textSize="22sp"
+                            android:layout_weight="1"
+                            android:text="Water &amp; Sanitation Tips"
+                            android:textSize="17sp"
                             android:textStyle="bold"
-                            android:textColor="#00AA55"/>
+                            android:textColor="@color/navy_primary"/>
+
+                        <TextView
+                            android:id="@+id/btnNextTip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next Tip ➔"
+                            android:textColor="@color/water_blue"
+                            android:textSize="13.5sp"
+                            android:textStyle="bold"
+                            android:padding="4dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                    <!-- Tip Card -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardWaterTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_tip_card"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvTipCategory"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="CONSERVATION"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/white"
+                                    android:background="@drawable/badge_tip_category"
+                                    android:paddingStart="12dp"
+                                    android:paddingEnd="12dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"/>
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1"/>
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_water_drop"
+                                    android:layout_marginEnd="6dp"
+                                    android:contentDescription="Water Icon"/>
+
+                                <TextView
+                                    android:id="@+id/tvTipCounter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1 of 4"
+                                    android:textSize="12.5sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/water_blue"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvTipTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Report Pipe Leaks Early"
+                                android:textSize="16.5sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/navy_primary"
+                                android:layout_marginBottom="6dp"/>
+
+                            <TextView
+                                android:id="@+id/tvTipDescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="A single dripping tap or broken pipe can waste over 100 liters of water daily. Reporting leaks early saves vital water for your entire community."
+                                android:textSize="13.5sp"
+                                android:textColor="#1E3A8A"
+                                android:lineSpacingExtra="3dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!-- Recent Activity Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Recent Community Reports"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/navy_primary"/>
+
+                    <TextView
+                        android:id="@+id/tvViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/water_blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:padding="4dp"/>
+
+                </LinearLayout>
+
+                <!-- Empty State for Home Reports -->
+                <LinearLayout
+                    android:id="@+id/layoutEmptyReports"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:background="@drawable/spinner_bg"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_water_drop"
+                        android:alpha="0.5"
+                        android:contentDescription="No reports icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No reports logged yet"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/navy_primary"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tap 'Report Infrastructure Issue' above to log a leak or pump issue in your area."
+                        android:textSize="12.5sp"
+                        android:textColor="@color/text_muted"
+                        android:gravity="center"
+                        android:layout_marginTop="2dp"/>
+
+                </LinearLayout>
+
+                <!-- Reports List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvReports"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
 
             </LinearLayout>
-
-            <!-- Recent Reports Header -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Recent Reports"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#1F3864"/>
-
-                <TextView
-                    android:id="@+id/tvViewAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:textColor="#2E75B6"
-                    android:textSize="14sp"/>
-
-            </LinearLayout>
-
-            <!-- Reports List -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvReports"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
 
         </LinearLayout>
+    </ScrollView>
 
-        <!-- Bottom Navigation -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            app:menu="@menu/bottom_nav_menu"
-            app:itemIconTint="#2E75B6"
-            app:itemTextColor="#2E75B6"/>
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_nav_bar"
+        app:elevation="12dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"/>
 
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

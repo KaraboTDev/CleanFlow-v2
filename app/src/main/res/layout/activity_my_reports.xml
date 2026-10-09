@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F4FF">
+    android:background="@color/app_bg">
 
-    <!-- Top Bar -->
+    <!-- Top App Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1F3864"
-        android:padding="16dp"
+        android:background="@drawable/bg_gradient_header"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -19,14 +22,18 @@
             android:id="@+id/btnBack"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@android:drawable/ic_media_previous"
-            android:layout_marginEnd="12dp"/>
+            android:src="@drawable/ic_back_arrow"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Back Button"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Reports"
-            android:textColor="#FFFFFF"
+            android:text="My Community Reports"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
@@ -36,11 +43,12 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/white"
+        android:scrollbars="none"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -50,40 +58,45 @@
             <Button
                 android:id="@+id/btnFilterAll"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="38dp"
                 android:text="All"
-                android:textSize="12sp"
-                android:backgroundTint="#1F3864"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/navy_primary"
+                android:textColor="@color/white"
                 android:layout_marginEnd="8dp"/>
 
             <Button
                 android:id="@+id/btnFilterPending"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="38dp"
                 android:text="Pending"
-                android:textSize="12sp"
-                android:backgroundTint="#DDDDDD"
-                android:textColor="#333333"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/card_stroke"
+                android:textColor="@color/text_secondary"
                 android:layout_marginEnd="8dp"/>
 
             <Button
                 android:id="@+id/btnFilterAssigned"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="38dp"
                 android:text="Assigned"
-                android:textSize="12sp"
-                android:backgroundTint="#DDDDDD"
-                android:textColor="#333333"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/card_stroke"
+                android:textColor="@color/text_secondary"
                 android:layout_marginEnd="8dp"/>
 
             <Button
                 android:id="@+id/btnFilterResolved"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="38dp"
                 android:text="Resolved"
-                android:textSize="12sp"
-                android:backgroundTint="#DDDDDD"
-                android:textColor="#333333"/>
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/card_stroke"
+                android:textColor="@color/text_secondary"/>
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -95,8 +108,12 @@
         android:layout_height="wrap_content"
         android:text="Loading reports..."
         android:textSize="13sp"
-        android:textColor="#888888"
-        android:padding="16dp"/>
+        android:textStyle="bold"
+        android:textColor="@color/text_muted"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"/>
 
     <!-- Reports List -->
     <androidx.recyclerview.widget.RecyclerView
@@ -104,8 +121,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:paddingTop="8dp"
         android:clipToPadding="false"/>
 
@@ -120,10 +137,11 @@
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@android:drawable/ic_menu_agenda"
-            android:alpha="0.3"/>
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_water_drop"
+            android:alpha="0.4"
+            android:contentDescription="Empty state icon"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,16 +149,16 @@
             android:text="No reports found"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#AAAAAA"
+            android:textColor="@color/navy_primary"
             android:layout_marginTop="16dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your submitted reports will appear here"
-            android:textSize="14sp"
-            android:textColor="#BBBBBB"
-            android:layout_marginTop="8dp"/>
+            android:text="Your submitted water &amp; sanitation reports will appear here"
+            android:textSize="13.5sp"
+            android:textColor="@color/text_muted"
+            android:layout_marginTop="6dp"/>
 
     </LinearLayout>
 

@@ -5,44 +5,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cleanflow.app.R
 import com.cleanflow.app.auth.SessionManager
 import com.cleanflow.app.data.AppDatabase
+import com.cleanflow.app.databinding.ActivityMyReportsBinding
+import com.cleanflow.app.databinding.ItemReportDetailBinding
 import com.cleanflow.app.models.Report
 import kotlinx.coroutines.launch
 
 class MyReportsActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMyReportsBinding
     private lateinit var sessionManager: SessionManager
     private lateinit var db: AppDatabase
-    private lateinit var rvMyReports: RecyclerView
-    private lateinit var tvReportCount: TextView
-    private lateinit var layoutEmpty: LinearLayout
 
     private var allReports = listOf<Report>()
     private var currentFilter = "All"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_reports)
+        binding = ActivityMyReportsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sessionManager = SessionManager(this)
         db = AppDatabase.getDatabase(this)
 
-        rvMyReports = findViewById(R.id.rvMyReports)
-        tvReportCount = findViewById(R.id.tvReportCount)
-        layoutEmpty = findViewById(R.id.layoutEmpty)
+        binding.rvMyReports.layoutManager = LinearLayoutManager(this)
 
-        rvMyReports.layoutManager = LinearLayoutManager(this)
-
-        findViewById<ImageView>(R.id.btnBack).setOnClickListener { finish() }
+        binding.btnBack.setOnClickListener { finish() }
 
         // Filter buttons
         setupFilterButtons()
@@ -52,27 +47,25 @@ class MyReportsActivity : AppCompatActivity() {
     }
 
     private fun setupFilterButtons() {
-        val btnAll = findViewById<Button>(R.id.btnFilterAll)
-        val btnPending = findViewById<Button>(R.id.btnFilterPending)
-        val btnAssigned = findViewById<Button>(R.id.btnFilterAssigned)
-        val btnResolved = findViewById<Button>(R.id.btnFilterResolved)
-
-        btnAll.setOnClickListener { setFilter("All", btnAll, btnPending, btnAssigned, btnResolved) }
-        btnPending.setOnClickListener { setFilter("Pending", btnAll, btnPending, btnAssigned, btnResolved) }
-        btnAssigned.setOnClickListener { setFilter("Assigned", btnAll, btnPending, btnAssigned, btnResolved) }
-        btnResolved.setOnClickListener { setFilter("Resolved", btnAll, btnPending, btnAssigned, btnResolved) }
+        binding.btnFilterAll.setOnClickListener { setFilter("All", binding.btnFilterAll, binding.btnFilterPending, binding.btnFilterAssigned, binding.btnFilterResolved) }
+        binding.btnFilterPending.setOnClickListener { setFilter("Pending", binding.btnFilterAll, binding.btnFilterPending, binding.btnFilterAssigned, binding.btnFilterResolved) }
+        binding.btnFilterAssigned.setOnClickListener { setFilter("Assigned", binding.btnFilterAll, binding.btnFilterPending, binding.btnFilterAssigned, binding.btnFilterResolved) }
+        binding.btnFilterResolved.setOnClickListener { setFilter("Resolved", binding.btnFilterAll, binding.btnFilterPending, binding.btnFilterAssigned, binding.btnFilterResolved) }
     }
 
     private fun setFilter(filter: String, vararg buttons: Button) {
         currentFilter = filter
+        val activeColor = ContextCompat.getColor(this, R.color.navy_primary)
+        val inactiveColor = ContextCompat.getColor(this, R.color.card_stroke)
+        val activeTextColor = ContextCompat.getColor(this, R.color.white)
+        val inactiveTextColor = ContextCompat.getColor(this, R.color.text_secondary)
+
         buttons.forEach { btn ->
             val isActive = btn.text.toString() == filter
             btn.backgroundTintList = android.content.res.ColorStateList.valueOf(
-                android.graphics.Color.parseColor(if (isActive) "#1F3864" else "#DDDDDD")
+                if (isActive) activeColor else inactiveColor
             )
-            btn.setTextColor(
-                android.graphics.Color.parseColor(if (isActive) "#FFFFFF" else "#333333")
-            )
+            btn.setTextColor(if (isActive) activeTextColor else inactiveTextColor)
         }
         applyFilter()
     }
@@ -88,20 +81,20 @@ class MyReportsActivity : AppCompatActivity() {
 
     private fun updateList(reports: List<Report>) {
         if (reports.isEmpty()) {
-            rvMyReports.visibility = View.GONE
-            layoutEmpty.visibility = View.VISIBLE
-            tvReportCount.text = "No reports found"
+            binding.rvMyReports.visibility = View.GONE
+            binding.layoutEmpty.visibility = View.VISIBLE
+            binding.tvReportCount.text = "No reports found"
         } else {
-            rvMyReports.visibility = View.VISIBLE
-            layoutEmpty.visibility = View.GONE
-            tvReportCount.text = "${reports.size} report(s) found"
-            rvMyReports.adapter = MyReportsAdapter(reports)
+            binding.rvMyReports.visibility = View.VISIBLE
+            binding.layoutEmpty.visibility = View.GONE
+            binding.tvReportCount.text = "${reports.size} report(s) found"
+            binding.rvMyReports.adapter = MyReportsAdapter(reports)
         }
     }
 
     private fun loadMyReports() {
         val userId = sessionManager.getUserId() ?: return
-        tvReportCount.text = "Loading reports..."
+        binding.tvReportCount.text = "Loading reports..."
 
         lifecycleScope.launch {
             allReports = db.reportDao().getReportsByUserId(userId)
@@ -113,30 +106,30 @@ class MyReportsActivity : AppCompatActivity() {
 class MyReportsAdapter(private val reports: List<Report>) :
     RecyclerView.Adapter<MyReportsAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvIssueType: TextView = view.findViewById(R.id.tvIssueType)
-        val tvCommunity: TextView = view.findViewById(R.id.tvCommunity)
-        val tvStatus: TextView = view.findViewById(R.id.tvStatus)
-    }
+    class ViewHolder(val binding: ItemReportDetailBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_report_detail, parent, false)
-        return ViewHolder(view)
+        val binding = ItemReportDetailBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val report = reports[position]
-        holder.tvIssueType.text = report.issueType
-        holder.tvCommunity.text = "${report.communityName} • ${report.severity} severity"
-        holder.tvStatus.text = report.status
+        holder.binding.tvIssueType.text = report.issueType
+        holder.binding.tvCommunity.text = "${report.communityName} • ${report.severity} severity"
+        holder.binding.tvStatus.text = report.status
 
-        val badgeRes = when (report.status) {
-            "Assigned" -> R.drawable.badge_assigned
-            "Resolved" -> R.drawable.badge_resolved
-            else -> R.drawable.badge_pending
+        val (badgeRes, textColorRes) = when (report.status) {
+            "Assigned" -> Pair(R.drawable.badge_assigned, R.color.status_assigned_text)
+            "Resolved" -> Pair(R.drawable.badge_resolved, R.color.status_resolved_text)
+            else -> Pair(R.drawable.badge_pending, R.color.status_pending_text)
         }
-        holder.tvStatus.setBackgroundResource(badgeRes)
+        holder.binding.tvStatus.setBackgroundResource(badgeRes)
+        holder.binding.tvStatus.setTextColor(ContextCompat.getColor(holder.binding.root.context, textColorRes))
     }
 
     override fun getItemCount() = reports.size
