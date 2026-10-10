@@ -94,14 +94,18 @@ class ReportIssueActivity : AppCompatActivity() {
 
     private fun setSeverity(level: String) {
         selectedSeverity = level
-        val activeColor = ContextCompat.getColor(this, R.color.navy_primary)
+
+        val lowColor = ContextCompat.getColor(this, R.color.severity_low)
+        val mediumColor = ContextCompat.getColor(this, R.color.severity_medium)
+        val highColor = ContextCompat.getColor(this, R.color.severity_high)
         val inactiveColor = ContextCompat.getColor(this, R.color.card_stroke)
+
         val activeTextColor = ContextCompat.getColor(this, R.color.white)
         val inactiveTextColor = ContextCompat.getColor(this, R.color.text_secondary)
 
-        binding.btnLow.backgroundTintList = android.content.res.ColorStateList.valueOf(if (level == "Low") activeColor else inactiveColor)
-        binding.btnMedium.backgroundTintList = android.content.res.ColorStateList.valueOf(if (level == "Medium") activeColor else inactiveColor)
-        binding.btnHigh.backgroundTintList = android.content.res.ColorStateList.valueOf(if (level == "High") activeColor else inactiveColor)
+        binding.btnLow.backgroundTintList = android.content.res.ColorStateList.valueOf(if (level == "Low") lowColor else inactiveColor)
+        binding.btnMedium.backgroundTintList = android.content.res.ColorStateList.valueOf(if (level == "Medium") mediumColor else inactiveColor)
+        binding.btnHigh.backgroundTintList = android.content.res.ColorStateList.valueOf(if (level == "High") highColor else inactiveColor)
 
         binding.btnLow.setTextColor(if (level == "Low") activeTextColor else inactiveTextColor)
         binding.btnMedium.setTextColor(if (level == "Medium") activeTextColor else inactiveTextColor)
@@ -119,18 +123,18 @@ class ReportIssueActivity : AppCompatActivity() {
             return
         }
 
-        binding.btnCaptureGps.text = "Capturing..."
+        binding.btnCaptureGps.text = "Locating..."
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             if (location != null) {
                 capturedLat = location.latitude
                 capturedLng = location.longitude
                 binding.etGpsLocation.setText("${String.format("%.4f", capturedLat)}° S, ${String.format("%.4f", capturedLng)}° E")
-                binding.btnCaptureGps.text = "Captured ✓"
+                binding.btnCaptureGps.text = "Located ✓"
                 val greenColor = ContextCompat.getColor(this, R.color.severity_low)
                 binding.btnCaptureGps.backgroundTintList = android.content.res.ColorStateList.valueOf(greenColor)
             } else {
                 Toast.makeText(this, "Could not get location. Try again.", Toast.LENGTH_SHORT).show()
-                binding.btnCaptureGps.text = "Capture GPS"
+                binding.btnCaptureGps.text = "Locate GPS"
             }
         }
     }
@@ -190,7 +194,7 @@ class ReportIssueActivity : AppCompatActivity() {
             binding.ivPreview.load(selectedImageUri) {
                 crossfade(true)
             }
-            binding.tvUploadText.text = "Image selected ✓"
+            binding.tvUploadText.text = "Photo attached ✓"
         }
     }
 

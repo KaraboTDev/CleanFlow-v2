@@ -50,41 +50,104 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+            <!-- Hero Banner Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/card_bg">
+                app:cardCornerRadius="18dp"
+                app:cardElevation="3dp"
+                android:layout_marginBottom="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_water_card"
+                    android:orientation="horizontal"
+                    android:padding="18dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/ic_water_drop_white"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="Water Drop Icon"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Community Dispatch Form"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Provide accurate details so local technicians can locate and repair the fault."
+                            android:textColor="@color/water_blue_bg"
+                            android:textSize="12.5sp"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 1: Infrastructure & Community -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/card_bg"
+                android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="22dp">
+                    android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Issue Details"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/navy_primary"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Help technicians resolve water &amp; sanitation faults quickly"
-                        android:textSize="13.5sp"
-                        android:textColor="@color/text_muted"
-                        android:layout_marginBottom="20dp"/>
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_water_drop"
+                            android:background="@drawable/circle_bg"
+                            android:padding="7dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Step 1 Icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1. Infrastructure &amp; Location"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/navy_primary"/>
+
+                    </LinearLayout>
 
                     <!-- Infrastructure Type -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Infrastructure Type *"
-                        android:textSize="13.5sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
@@ -92,18 +155,18 @@
                     <Spinner
                         android:id="@+id/spinnerIssueType"
                         android:layout_width="match_parent"
-                        android:layout_height="52dp"
+                        android:layout_height="50dp"
                         android:background="@drawable/spinner_bg"
                         android:paddingStart="12dp"
                         android:paddingEnd="12dp"
-                        android:layout_marginBottom="18dp"/>
+                        android:layout_marginBottom="16dp"/>
 
                     <!-- Community Name -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Community Name / Village *"
-                        android:textSize="13.5sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
@@ -116,67 +179,114 @@
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxStrokeColor="@color/navy_primary"
-                        android:layout_marginBottom="18dp">
+                        app:boxStrokeColor="@color/navy_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCommunityName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Enter community or village name"
+                            android:hint="e.g. Mokopane Section B"
                             android:inputType="textCapWords"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 2: Priority & Description -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/card_bg"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_location_pin"
+                            android:background="@drawable/circle_bg"
+                            android:padding="7dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Step 2 Icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2. Priority &amp; Description"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/navy_primary"/>
+
+                    </LinearLayout>
 
                     <!-- Severity -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Severity Level *"
-                        android:textSize="13.5sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/navy_primary"
-                        android:layout_marginBottom="6dp"/>
+                        android:layout_marginBottom="8dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="18dp">
+                        android:layout_marginBottom="16dp">
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnLow"
                             android:layout_width="0dp"
-                            android:layout_height="46dp"
+                            android:layout_height="48dp"
                             android:layout_weight="1"
                             android:text="Low"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:backgroundTint="@color/card_stroke"
+                            app:cornerRadius="12dp"
+                            app:backgroundTint="@color/card_stroke"
                             android:textColor="@color/text_secondary"
                             android:layout_marginEnd="6dp"/>
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnMedium"
                             android:layout_width="0dp"
-                            android:layout_height="46dp"
+                            android:layout_height="48dp"
                             android:layout_weight="1"
                             android:text="Medium"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:backgroundTint="@color/card_stroke"
+                            app:cornerRadius="12dp"
+                            app:backgroundTint="@color/card_stroke"
                             android:textColor="@color/text_secondary"
                             android:layout_marginEnd="6dp"/>
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnHigh"
                             android:layout_width="0dp"
-                            android:layout_height="46dp"
+                            android:layout_height="48dp"
                             android:layout_weight="1"
                             android:text="High"
                             android:textSize="13sp"
                             android:textStyle="bold"
-                            android:backgroundTint="@color/card_stroke"
+                            app:cornerRadius="12dp"
+                            app:backgroundTint="@color/card_stroke"
                             android:textColor="@color/text_secondary"/>
 
                     </LinearLayout>
@@ -186,7 +296,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Description of Fault *"
-                        android:textSize="13.5sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
@@ -199,25 +309,69 @@
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxStrokeColor="@color/navy_primary"
-                        android:layout_marginBottom="18dp">
+                        app:boxStrokeColor="@color/navy_primary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etDescription"
                             android:layout_width="match_parent"
-                            android:layout_height="110dp"
+                            android:layout_height="100dp"
                             android:hint="Provide details (e.g., continuous leak, pump noise, no water flow)..."
                             android:inputType="textMultiLine"
                             android:gravity="top"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 3: Photo & GPS Coordinates -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/card_bg"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_water_drop"
+                            android:background="@drawable/circle_bg"
+                            android:padding="7dp"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Step 3 Icon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3. Evidence &amp; GPS"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/navy_primary"/>
+
+                    </LinearLayout>
+
                     <!-- Upload Image -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Upload Photo (Optional)"
-                        android:textSize="13.5sp"
+                        android:text="Photo Evidence (Optional)"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
@@ -225,18 +379,18 @@
                     <LinearLayout
                         android:id="@+id/layoutUpload"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="105dp"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:background="@drawable/dashed_border"
+                        android:background="@drawable/bg_upload_zone"
                         android:clickable="true"
                         android:focusable="true"
                         android:layout_marginBottom="18dp">
 
                         <ImageView
                             android:id="@+id/ivPreview"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:src="@drawable/ic_water_drop"
                             android:scaleType="centerCrop"
                             android:visibility="visible"
@@ -259,7 +413,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="GPS Location Coordinates *"
-                        android:textSize="13.5sp"
+                        android:textSize="13sp"
                         android:textStyle="bold"
                         android:textColor="@color/navy_primary"
                         android:layout_marginBottom="6dp"/>
@@ -268,8 +422,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="22dp">
+                        android:gravity="center_vertical">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
@@ -297,64 +450,66 @@
                             android:id="@+id/btnCaptureGps"
                             android:layout_width="wrap_content"
                             android:layout_height="54dp"
-                            android:text="Capture GPS"
-                            android:textSize="13sp"
+                            android:text="Locate GPS"
+                            android:textSize="12.5sp"
                             android:textStyle="bold"
                             app:cornerRadius="12dp"
                             app:backgroundTint="@color/water_blue"/>
 
                     </LinearLayout>
 
-                    <!-- Warning / Reassurance Box -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/warning_bg"
-                        android:padding="14dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="24dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ℹ️  "
-                            android:textSize="16sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Your report will be automatically logged and dispatched to local municipal technicians."
-                            android:textSize="12sp"
-                            android:textColor="@color/status_pending_text"/>
-
-                    </LinearLayout>
-
-                    <!-- Submit Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSubmitReport"
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:text="Submit Infrastructure Report"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="14dp"
-                        app:backgroundTint="@color/navy_primary"
-                        android:layout_marginBottom="12dp"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnCancel"
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:text="Cancel"
-                        android:textSize="16sp"
-                        app:cornerRadius="14dp"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        app:strokeColor="@color/card_stroke"
-                        android:textColor="@color/text_secondary"/>
-
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
+            <!-- Info Banner Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_info_banner"
+                android:padding="14dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ℹ️  "
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your report will be automatically logged and dispatched to local municipal technicians."
+                    android:textSize="12.5sp"
+                    android:textColor="@color/status_assigned_text"/>
+
+            </LinearLayout>
+
+            <!-- Submit Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubmitReport"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Submit Infrastructure Report"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:backgroundTint="@color/navy_primary"
+                android:layout_marginBottom="12dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Cancel"
+                android:textSize="16sp"
+                app:cornerRadius="14dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="@color/card_stroke"
+                android:textColor="@color/text_secondary"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
